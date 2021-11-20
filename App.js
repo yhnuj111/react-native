@@ -19,6 +19,8 @@ import {
   Dimensions,
   FlatList,
   Alert,
+  TouchableHighlight,
+  StatusBar,
 } from 'react-native';
 
 const listData = [
@@ -46,9 +48,12 @@ class App extends Component {
   }
   renderItem({item, index}) {
     return (
-      <View style={styles.row}>
-        <Text>{item}</Text>
-      </View>
+      <TouchableHighlight
+        onPress={() => Alert.alert('你单击了商品列表', null, null)}>
+        <View style={styles.row}>
+          <Text>{item}</Text>
+        </View>
+      </TouchableHighlight>
     );
   }
   _startTimer() {
@@ -69,6 +74,11 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar
+          backgroundColor={'blue'}
+          barStyle={'default'}
+          networkActivityIndicatorVisible={true}
+        />
         <View style={styles.searchBar}>
           <TextInput style={styles.input} placeholder="搜索商品" />
           <Button
@@ -87,14 +97,17 @@ class App extends Component {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             pagingEnabled={true}>
-            <Text
-              style={{
-                width: Dimensions.get('window').width,
-                height: 180,
-                backgroundColor: 'gray',
-              }}>
-              广告1
-            </Text>
+            <TouchableHighlight
+              onPress={() => Alert.alert('你单击了轮播图', null, null)}>
+              <Text
+                style={{
+                  width: Dimensions.get('window').width,
+                  height: 180,
+                  backgroundColor: 'gray',
+                }}>
+                广告1
+              </Text>
+            </TouchableHighlight>
             <Text
               style={{
                 width: Dimensions.get('window').width,
